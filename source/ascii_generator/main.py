@@ -1,7 +1,13 @@
 """main.py: Called when the package is ran as a script."""
 
 from logging import shutdown as shutdown_logging
+from pathlib import Path
 
+from .computation.image_processing import (
+    png_to_brightness_matrix,
+    chunk_matrix_to_resolution,
+    brightness_matrix_to_ascii,
+)
 from .config.constants import Constants
 from .interface.command_line import command_line_interface
 from .logs.setup_logging import setup_logging
@@ -29,8 +35,11 @@ def main() -> None:
     )
 
     # Main application logic
-    # TODO: Implement the main application logic
+    brightness_matrix = png_to_brightness_matrix(Path(user_arguments["input_file"]))
+    chunked_matrix = chunk_matrix_to_resolution(brightness_matrix, user_arguments["resolution"])
+    ascii_art = brightness_matrix_to_ascii(chunked_matrix)
 
+    # Shutdown logging
     shutdown_logging()
 
 

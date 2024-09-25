@@ -55,12 +55,25 @@ def command_line_interface() -> dict[str, Any]:
         help="Path to the PNG file to convert.",
     )  # Path to the PNG file to convert
 
+    argparser.add_argument(
+        "--resolution",
+        "-r",
+        action="store",
+        type=int,
+        nargs=2,
+        required=False,
+        default=Constants.DEFAULT_RESOLUTION,
+        help="The resolution to convert the image to.",
+    )  # The resolution to convert the image to
+
     parsed_args = argparser.parse_args()
 
     # Create a dictionary to return the parsed arguments
     arguments: dict[str, Any] = {
         "log_output_location": parsed_args.log_output_location,
         "verbose": parsed_args.verbose,
+        "input_file": parsed_args.input_file,
+        "resolution": parsed_args.resolution,
     }
 
     logger.debug(f"Arguments: {arguments}")

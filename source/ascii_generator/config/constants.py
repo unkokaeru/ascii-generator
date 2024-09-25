@@ -35,3 +35,23 @@ class Constants:
 
     # Default values
     DEFAULT_LOG_SAVE_PATH: Path = Path("ascii-generator_log.txt")
+
+    # ASCII constants
+    DEFAULT_RESOLUTION: tuple[int, int] = (36, 36)
+    ASCII_CHARACTERS: list[str] = [
+        " ",
+        ".",
+        ",",
+        ":",
+        ";",
+        "i",
+        "1",
+        "t",
+        "f",
+        "L",
+        "C",
+        "G",
+        "0",
+        "8",
+        "#",
+    ]
