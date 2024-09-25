@@ -1,1 +1,0 @@
-types-pyyaml==6.0.12.20240917 ; python_version >= "3.9" and python_version < "4.0"
