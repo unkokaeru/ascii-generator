@@ -4,13 +4,14 @@ from logging import shutdown as shutdown_logging
 from pathlib import Path
 
 from .computation.image_processing import (
-    png_to_brightness_matrix,
-    chunk_matrix_to_resolution,
     brightness_matrix_to_ascii,
+    chunk_matrix_to_resolution,
+    png_to_brightness_matrix,
 )
 from .config.constants import Constants
 from .interface.command_line import command_line_interface
 from .logs.setup_logging import setup_logging
+from .utilities.file_interaction import save_text_to_file
 
 
 def main() -> None:
@@ -37,7 +38,8 @@ def main() -> None:
     # Main application logic
     brightness_matrix = png_to_brightness_matrix(Path(user_arguments["input_file"]))
     chunked_matrix = chunk_matrix_to_resolution(brightness_matrix, user_arguments["resolution"])
-    ascii_art = brightness_matrix_to_ascii(chunked_matrix)
+    ascii_art = brightness_matrix_to_ascii(chunked_matrix)  # TODO: Add edge detection
+    save_text_to_file(ascii_art, Path("ascii_art.txt"))
 
     # Shutdown logging
     shutdown_logging()
