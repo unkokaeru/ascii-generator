@@ -28,8 +28,9 @@ Features
 --------
 
 -  ☒ Installable via pip
--  ☒ Command-line interface-  ☒ Interactive documentation
--  ☐ Some new planned feature
+-  ☒ Command-line interface
+-  ☒ Interactive documentation
+-  ☐ PNG to ASCII conversion
 
 Installation
 ------------

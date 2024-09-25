@@ -20,7 +20,7 @@ Converts a PNG file to ASCII art.
 - [x] Installable via pip
 - [x] Command-line interface
 - [x] Interactive documentation
-- [ ] Some new planned feature
+- [ ] PNG to ASCII conversion
 
 ## Installation
 
