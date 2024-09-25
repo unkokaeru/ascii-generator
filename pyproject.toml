@@ -52,7 +52,7 @@ tox = "^4.18.1"
 
 [tool.poetry.group.docs.dependencies]
 # For generating documentation.
-sphinx = "^8.0.2"
+sphinx = "^7.0.0"
 
 [tool.poetry.group.release.dependencies]
 # For making a new versioned release of the project.
