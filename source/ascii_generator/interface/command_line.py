@@ -47,6 +47,14 @@ def command_line_interface() -> dict[str, Any]:
         version=f"%(prog)s {__version__}",
     )  # Display the version number
 
+    argparser.add_argument(
+        "input_file",
+        action="store",
+        type=str,
+        required=True,
+        help="Path to the PNG file to convert.",
+    )  # Path to the PNG file to convert
+
     parsed_args = argparser.parse_args()
 
     # Create a dictionary to return the parsed arguments
