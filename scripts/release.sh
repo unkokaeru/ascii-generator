@@ -36,7 +36,7 @@ fi
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # Ensure requirements.txt files are up to date
-"$SCRIPT_DIR/export_requirements.sh"
+source "$SCRIPT_DIR/export_requirements.sh"
 
 # Clear the current changelog - it gets regenerated fully on each release
 echo '' > CHANGELOG.md
