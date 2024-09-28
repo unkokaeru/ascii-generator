@@ -1,12 +1,13 @@
 #!/bin/bash -e
 
 # This script takes care of:
-# 1. Updating the version number in the pyproject.toml file
-# 2. Generating a new changelog based on the commit history
-# 3. Committing the changes to the git repository
-# 4. Creating a new tag for the release
-# 5. Building the package
-# 6. Publishing the package to PyPI
+# 1. Updating the version numbers across the project
+# 2. Update requirements and their files across the project
+# 3. Generating a new changelog based on the commit history
+# 4. Committing the changes to the git repository
+# 5. Creating a new tag for the release
+# 6. Building the package
+# 7. Publishing the package to PyPI
 
 # The script takes the type of version to release ('major', 'minor', or 'patch') as an argument.
 # It is incompatible with pre-release versions for simplicity.
@@ -35,6 +36,9 @@ fi
 # Get the current script's directory
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+# Sync pyproject.toml dependencies with pip freeze
+source "$SCRIPT_DIR/sync_requirements.sh"
+
 # Ensure requirements.txt files are up to date
 source "$SCRIPT_DIR/export_requirements.sh"
 
@@ -44,7 +48,7 @@ echo '' > CHANGELOG.md
 # Update the changelog
 gitchangelog > CHANGELOG.md
 git add CHANGELOG.md
-git commit -m "Update CHANGELOG.md"
+git commit -m "chore: update changelog"
 
 # Get the current version number
 current_version=$(poetry version -s)
@@ -60,7 +64,7 @@ find source -type f -name "__init__.py" -exec sed -i "s/__version__ = \"$current
 
 # Update the version number in the git repo
 git add .
-git commit -m "Bump version: $current_version -> $new_version"
+git commit -m "chore: bump version from $current_version to $new_version"
 
 # Create a new tag and push it to the remote repository
 git tag -a "v$new_version" -m "Release $new_version"

@@ -17,13 +17,15 @@ include = ["LICENSE", "source/ascii_generator/py.typed"]
 [tool.poetry.scripts]
 ascii-generator = "ascii_generator.main:main"
 
-[tool.poetry.dependencies]
 # Main project dependencies.
+[tool.poetry.dependencies]
+pillow = "^10.4.0"
+numpy = "^2.1.1"
 python = ">=3.9,<4.0"
 rich = "^13.7.1"
 
-[tool.poetry.group.dev.dependencies]
 # Linters for use during development (e.g. via vscode).
+[tool.poetry.group.dev.dependencies]
 black = "^22.6.0"
 flake8 = "^5.0.0"
 flake8-docstrings = "^1.6.0"
@@ -34,12 +36,12 @@ pre-commit = "^3.7.1"
 pydocstyle = "^6.1.0"
 ruff = "^0.5.2"
 
-[tool.poetry.group.types.dependencies]
 # Type stubs used by the package.
+[tool.poetry.group.types.dependencies]
 types-PyYAML = "^6.0.0"
 
-[tool.poetry.group.test.dependencies]
 # For running tests.
+[tool.poetry.group.test.dependencies]
 pytest = "^8.3.2"
 pytest-sugar = "^1.0.0"
 pytest-clarity = "^1.0.1"
@@ -50,12 +52,12 @@ pytest-watch = "^4.2.0"
 pytest-testmon = "^2.1.1"
 tox = "^4.18.1"
 
-[tool.poetry.group.docs.dependencies]
 # For generating documentation.
+[tool.poetry.group.docs.dependencies]
 sphinx = "^7.0.0"
 
-[tool.poetry.group.release.dependencies]
 # For making a new versioned release of the project.
+[tool.poetry.group.release.dependencies]
 gitchangelog = "^3.0.4"
 poetry-bumpversion = "^0.3.2"
 pystache = "^0.6.5"
