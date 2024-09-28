@@ -69,8 +69,12 @@ git tag -a "v$new_version" -m "Release $new_version"
 
 git push --follow-tags
 
+echo "Release $new_version created successfully."
+
 # Build the package for PyPI
 poetry build
 
 # Publish the package to PyPI
 poetry publish
+
+echo "Package published to PyPI successfully."
