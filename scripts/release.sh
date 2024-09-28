@@ -18,6 +18,8 @@
 # Error codes:
 # 1 - Uncommitted changes in the git repository
 # 2 - Invalid version type
+# 3 - Failed to update the lock file
+# 4 - Failed to export requirements
 
 # Check if the git repo has any uncommitted changes
 if [[ -n $(git status --porcelain) ]]; then
