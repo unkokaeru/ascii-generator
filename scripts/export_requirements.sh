@@ -53,4 +53,4 @@ else
     echo "No changes to commit for requirements files."
 fi
 
-exit 0
+return 0  # Success but don't exit the script, as it is sourced by another script
