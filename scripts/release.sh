@@ -36,10 +36,8 @@ fi
 # Get the current script's directory
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-# Sync pyproject.toml dependencies with pip freeze
-source "$SCRIPT_DIR/sync_requirements.sh"
-
-# Ensure requirements.txt files are up to date
+# Update requirements and their files
+poetry update
 source "$SCRIPT_DIR/export_requirements.sh"
 
 # Clear the current changelog - it gets regenerated fully on each release
