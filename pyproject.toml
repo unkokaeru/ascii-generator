@@ -21,7 +21,7 @@ ascii-generator = "ascii_generator.main:main"
 [tool.poetry.dependencies]
 pillow = "^10.4.0"
 numpy = "^2.1.1"
-python = ">=3.9,<4.0"
+python = "^3.10"
 rich = "^13.7.1"
 
 # Linters for use during development (e.g. via vscode).
