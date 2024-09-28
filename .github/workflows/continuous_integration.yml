@@ -125,7 +125,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: 
       - test  # Ensure tests pass before releasing
-      - docs  # Ensure docs are built before releasing to avoid uncommitted changes
+      - docs  # Ensure docs are built before releasing to avoid unsynced docs
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -166,6 +166,17 @@ jobs:
             echo "version_type=patch" >> $GITHUB_ENV
           else
             echo "version_type=minor" >> $GITHUB_ENV  # Default to minor if not specified
+          fi
+
+      - name: Check for uncommitted changes
+        run: |
+          if [[ -n $(git status -s) ]]; then
+            echo "Uncommitted changes found."
+            git status
+            echo "Changes:"
+            git diff
+          else
+            echo "No uncommitted changes found."
           fi
 
       - name: Run release with tox
