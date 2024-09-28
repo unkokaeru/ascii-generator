@@ -170,6 +170,7 @@ jobs:
 
       - name: Run release with tox
         run: |
+          chmod +x scripts/release.sh
           max_attempts=3
           attempt=0
           until [ $attempt -ge $max_attempts ]
