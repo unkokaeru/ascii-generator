@@ -184,7 +184,6 @@ jobs:
               echo "Tox failed with exit code 1 (attempt $attempt). Attempting to commit changes..."
               git add .
               git commit -m "chore: commit changes for release"
-              echo "Changes committed. Retrying..."
             else
               echo "Tox failed with exit code $exit_code (attempt $attempt)."
             fi
