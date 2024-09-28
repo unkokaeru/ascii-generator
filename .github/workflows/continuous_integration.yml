@@ -168,13 +168,15 @@ jobs:
             echo "version_type=minor" >> $GITHUB_ENV  # Default to minor if not specified
           fi
 
-      - name: Check for uncommitted changes
+      - name: Ensure no uncommitted changes
         run: |
-          if [[ -n $(git status -s) ]]; then
+          if [[ -n $(git status --porcelain) ]]; then
             echo "Uncommitted changes found."
             git status
             echo "Changes:"
             git diff
+            git add .
+            git commit -m "chore: Commit uncommitted changes before release"
           else
             echo "No uncommitted changes found."
           fi
