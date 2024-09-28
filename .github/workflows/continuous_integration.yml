@@ -168,20 +168,18 @@ jobs:
             echo "version_type=minor" >> $GITHUB_ENV  # Default to minor if not specified
           fi
 
-      - name: Ensure no uncommitted changes
-        run: |
-          if [[ -n $(git status --porcelain) ]]; then
-            echo "Uncommitted changes found."
-            git status
-            echo "Changes:"
-            git diff
-            git add .
-            git commit -m "chore: Commit uncommitted changes before release"
-          else
-            echo "No uncommitted changes found."
-          fi
-
       - name: Run release with tox
         run: |
-          chmod +x scripts/release.sh
-          tox -e release -- ${{ env.version_type }}
+          max_attempts=3
+          attempt=0
+          until [ $attempt -ge $max_attempts ]
+          do
+            tox -e release -- ${{ env.version_type }} && break
+            attempt=$(( attempt + 1 ))
+            echo "Tox failed (attempt $attempt). Retrying in 10 seconds..."
+            sleep 10
+          done
+          if [ $attempt -ge $max_attempts ]; then
+            echo "Tox failed after $attempt attempts. Exiting..."
+            exit 1
+          fi
