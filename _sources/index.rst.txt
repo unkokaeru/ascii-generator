@@ -16,13 +16,12 @@ Welcome to the documentation for ascii-generator!
 
 Converts a PNG file to ASCII art.
 
--  [ascii-generator](#ascii-generator)
-    -  `Features <#features>`__
-    -  `Installation <#installation>`__
-    -  `Usage <#usage>`__
-    -  `Documentation <#documentation>`__
-    -  `Contributing <#contributing>`__
-    -  `License <#license>`__
+-  `Features <#features>`__
+-  `Installation <#installation>`__
+-  `Usage <#usage>`__
+-  `Documentation <#documentation>`__
+-  `Contributing <#contributing>`__
+-  `License <#license>`__
 
 Features
 --------
