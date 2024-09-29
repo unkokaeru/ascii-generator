@@ -175,7 +175,7 @@ jobs:
           attempt=0
           until [ $attempt -ge $max_attempts ]
           do
-            tox -e release -- ${{ env.version_type }}
+            tox -e release -- ${{ env.version_type }} && break
             exit_code=$?
 
             if [ $exit_code -eq 0 ]; then
