@@ -81,6 +81,7 @@ echo "Version bump committed successfully."
 # Create a new tag and push it to the remote repository
 echo "Creating a new tag for the release..."
 git tag -a "v$new_version" -m "Release $new_version"
+echo "Pushing the new tag to the remote repository..."
 git push --follow-tags
 echo "Release $new_version created successfully."
 
