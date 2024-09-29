@@ -35,6 +35,9 @@ def main() -> None:
         ),
     )
 
+    # Dummy test code to check CI/CD pipeline, remove later if I remember
+    print("Welcome to the ASCII Art Generator!")  # TODO: Remove dummy code
+
     # Main application logic
     brightness_matrix = png_to_brightness_matrix(Path(user_arguments["input_file"]))
     chunked_matrix = chunk_matrix_to_resolution(brightness_matrix, user_arguments["resolution"])
