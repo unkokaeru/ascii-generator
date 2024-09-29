@@ -5,6 +5,8 @@
 
 ### Features
 
+* Dummy commit. [William Fayers]
+
 * Save ascii art. [William Fayers]
 
 * Add ascii gen logic. [William Fayers]
@@ -12,6 +14,8 @@
 * Add input argument. [William Fayers]
 
 ### Fixes
+
+* Release flow. [William Fayers]
 
 * Random code that fixes stuff apparently. [William Fayers]
 
@@ -51,6 +55,8 @@
 
 ### CI
 
+* Release only on semver changes. [William Fayers]
+
 * Commit before retry tox. [William Fayers]
 
 * Fix perms. [William Fayers]
@@ -70,6 +76,10 @@
 * Version update. [William Fayers]
 
 ### Chore
+
+* Bump version from 1.0.1 to 1.1.0. [unkokaeru]
+
+* Update changelog. [unkokaeru]
 
 * Update requirement files. [unkokaeru]
 
