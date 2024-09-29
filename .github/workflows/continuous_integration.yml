@@ -159,23 +159,28 @@ jobs:
         run: |
           echo "Commit message: ${{ github.event.head_commit.message }}"
           if [[ "${{ github.event.head_commit.message }}" == feat\!* ]]; then
-            echo "version_type=major" >> $GITHUB_ENV
+            echo "::set-output name=version_type::major"
+            echo "::set-output name=release_proceed::true"
           elif [[ "${{ github.event.head_commit.message }}" == feat:* ]]; then
-            echo "version_type=minor" >> $GITHUB_ENV
-          elif [[ "${{ github.event.head_commit.message }}" == fix:* ]]; then
-            echo "version_type=patch" >> $GITHUB_ENV
+            echo "::set-output name=version_type::minor"
+            echo "::set-output name=release_proceed::true"
+          elif [[ "${{ github.event.head_commit.message }}" == fix:* \
+              || "${{ github.event.head_commit.message }}" == refactor:* ]]; then
+            echo "::set-output name=version_type::patch"
+            echo "::set-output name=release_proceed::true"
           else
-            echo "version_type=minor" >> $GITHUB_ENV  # Default to minor if not specified
+            echo "::set-output name=release_proceed::false"  # No release needed
           fi
 
       - name: Run release with tox
+        if: steps.get_version.outputs.release_proceed == 'true'
         run: |
           chmod +x scripts/release.sh
           max_attempts=3
           attempt=0
           until [ $attempt -ge $max_attempts ]
           do
-            tox -e release -- ${{ env.version_type }} && break
+            tox -e release -- ${{ steps.get_version.outputs.version_type }} && break
             exit_code=$?
 
             if [ $exit_code -eq 0 ]; then
