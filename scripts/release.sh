@@ -20,6 +20,7 @@
 # 2 - Invalid version type
 # 3 - Failed to update the lock file
 # 4 - Failed to export requirements
+# 5 - Failed to pull the latest changes from the remote repository
 
 # Check if the git repo has any uncommitted changes
 if [[ -n $(git status --porcelain) ]]; then
@@ -81,6 +82,13 @@ echo "Version bump committed successfully."
 # Create a new tag and push it to the remote repository
 echo "Creating a new tag for the release..."
 git tag -a "v$new_version" -m "Release $new_version"
+
+echo "Pulling the latest changes from the remote repository..."
+if ! git pull origin main; then
+    echo "Failed to pull the latest changes from the remote repository."
+    exit 5
+fi
+
 echo "Pushing the new tag to the remote repository..."
 git push --follow-tags
 echo "Release $new_version created successfully."
