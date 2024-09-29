@@ -71,6 +71,14 @@
 
 ### Chore
 
+* Update requirement files. [unkokaeru]
+
+* Update lock file. [unkokaeru]
+
+* Bump version from 1.0.0 to 1.0.1. [unkokaeru]
+
+* Update changelog. [unkokaeru]
+
 * Commit changes for release. [unkokaeru]
 
 * Update requirement files. [William Fayers]
@@ -78,6 +86,8 @@
 * Add lock. [William Fayers]
 
 ### Docs
+
+* Readme desc. [William Fayers]
 
 * Contents formatting. [William Fayers]
 
