@@ -5,7 +5,7 @@
 [![Continuous Integration (CI) Tests](https://img.shields.io/github/actions/workflow/status/unkokaeru/ascii-generator/continuous_integration.yml?label=tests)](https://github.com/unkokaeru/ascii-generator)
 [![GitHub last commit](https://img.shields.io/github/last-commit/unkokaeru/ascii-generator)](https://github.com/unkokaeru/ascii-generator)
 
-Converts a PNG file to ASCII art.
+Converts a PNG file to ASCII art. Mainly built just to test `untitledpythonproject`.
 
 - [ascii-generator](#ascii-generator)
     - [Features](#features)
