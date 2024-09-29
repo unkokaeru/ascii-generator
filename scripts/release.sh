@@ -83,6 +83,8 @@ echo "Version bump committed successfully."
 echo "Creating a new tag for the release..."
 git tag -a "v$new_version" -m "Release $new_version"
 
+git config pull.rebase true  # Ensure that the tag is pushed correctly
+
 echo "Pulling the latest changes from the remote repository..."
 if ! git pull origin main; then
     echo "Failed to pull the latest changes from the remote repository."
